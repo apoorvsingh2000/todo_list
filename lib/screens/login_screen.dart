@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   showLoading = true;
                 });
                 await _auth.verifyPhoneNumber(
-                  phoneNumber: phoneController.text,
+                  phoneNumber: '+91' + phoneController.text,
                   verificationCompleted: (phoneAuthCredential) async {
                     setState(() {
                       showLoading = false;

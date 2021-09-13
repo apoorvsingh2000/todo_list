@@ -35,11 +35,15 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.logout,
-                    size: 30.0,
-                    color: Colors.lightBlueAccent,
+                FlatButton(
+                  child: CircleAvatar(
+                    radius: 30.0,
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.logout,
+                      size: 30.0,
+                      color: Colors.lightBlueAccent,
+                    ),
                   ),
                   onPressed: () async {
                     await _auth.signOut();
@@ -55,7 +59,7 @@ class TasksScreen extends StatelessWidget {
                   height: 10.0,
                 ),
                 Text(
-                  'To-do List {user.phoneNumber}',
+                  'To-do List',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50.0,
