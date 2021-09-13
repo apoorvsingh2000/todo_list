@@ -22,7 +22,7 @@ class TaskTile extends StatelessWidget {
         taskTitle,
         style: TextStyle(decoration: isChecked ? TextDecoration.lineThrough : null),
       ),
-      subtitle: Text(taskTime == null ? 'hemlo' : taskTime),
+      subtitle: Text(taskTime),
       trailing: Checkbox(
         activeColor: Colors.lightBlueAccent,
         value: isChecked,

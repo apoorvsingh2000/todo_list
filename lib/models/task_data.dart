@@ -35,9 +35,12 @@ class TaskData extends ChangeNotifier {
 
   void getUpdatedList() {
     for (int i = 0; i < _tasks.length; i++) {
-      var dt1 = _tasks[i].getDateTime();
-      var dt2 = _tasks[i + 1].getDateTime();
-      print(_tasks[i].getDateTime());
+      if ((_tasks[i].dateTime as DateTime).isBefore(DateTime.now())) {
+        _tasks.removeAt(i);
+        print(true);
+      }
     }
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    _tasks.sort((a, b) => a.dateTime.compareTo(b.dateTime));
   }
 }
