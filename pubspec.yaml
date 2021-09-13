@@ -18,10 +18,12 @@ dependencies:
   animated_text_kit: ^2.1.0
   firebase_core:
   cloud_firestore:
+  firebase_auth:
   google_fonts:
   shared_preferences: ^0.5.8
   date_time_picker:
   flutter_datetime_picker:
+  otp_text_field:
 
 dev_dependencies:
   flutter_test:

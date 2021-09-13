@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_list/screens/login_screen.dart';
 import 'package:todo_list/widgets/tasks_list.dart';
 import 'package:todo_list/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/models/task_data.dart';
 
 class TasksScreen extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +35,21 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                CircleAvatar(
-                  child: Icon(
-                    Icons.list,
+                IconButton(
+                  icon: Icon(
+                    Icons.logout,
                     size: 30.0,
                     color: Colors.lightBlueAccent,
                   ),
-                  backgroundColor: Colors.white,
-                  radius: 30.0,
+                  onPressed: () async {
+                    await _auth.signOut();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(
                   height: 10.0,

@@ -7,7 +7,7 @@ import 'package:todo_list/models/task_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       builder: (context) => TaskData(),
       child: MaterialApp(
-        home: TasksScreen(),
+        home: LoginScreen(),
       ),
     );
   }
