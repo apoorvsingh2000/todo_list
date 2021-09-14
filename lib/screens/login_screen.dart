@@ -47,6 +47,17 @@ class _LoginScreenState extends State<LoginScreen> {
             Spacer(
               flex: 1,
             ),
+            Text(
+              'To-do List',
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 50.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            Spacer(
+              flex: 1,
+            ),
             TextField(
               controller: phoneController,
               decoration: InputDecoration(
@@ -95,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.blue,
             ),
             Spacer(
-              flex: 2,
+              flex: 3,
             ),
           ],
         ),
@@ -110,6 +121,17 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Spacer(
+              flex: 1,
+            ),
+            Text(
+              'To-do List',
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 50.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
             Spacer(
               flex: 1,
             ),
@@ -136,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.blue,
             ),
             Spacer(
-              flex: 2,
+              flex: 3,
             ),
           ],
         ),

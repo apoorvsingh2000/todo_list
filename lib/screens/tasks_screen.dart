@@ -30,16 +30,6 @@ class TasksScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 FlatButton(
-                  child: Text('notify'),
-                  onPressed: () {
-                    NotificationService.showNotification(
-                      title: 'Buy milk',
-                      body: 'date time',
-                      payload: 'task.abs',
-                    );
-                  },
-                ),
-                FlatButton(
                   child: CircleAvatar(
                     radius: 30.0,
                     backgroundColor: Colors.white,
