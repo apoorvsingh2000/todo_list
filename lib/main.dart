@@ -5,6 +5,7 @@ import 'package:todo_list/screens/login_screen.dart';
 import 'package:todo_list/screens/tasks_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/models/task_data.dart';
+import 'package:todo_list/services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +40,7 @@ class _InitializerWidgetState extends State<InitializerWidget> {
     _auth = FirebaseAuth.instance;
     _user = _auth.currentUser;
     isLoading = false;
+    NotificationService.init();
   }
 
   @override

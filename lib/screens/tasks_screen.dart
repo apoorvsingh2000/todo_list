@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_list/screens/login_screen.dart';
+import 'package:todo_list/services/notification_service.dart';
 import 'package:todo_list/widgets/tasks_list.dart';
 import 'package:todo_list/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,16 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                FlatButton(
+                  child: Text('notify'),
+                  onPressed: () {
+                    NotificationService.showNotification(
+                      title: 'Buy milk',
+                      body: 'date time',
+                      payload: 'task.abs',
+                    );
+                  },
+                ),
                 FlatButton(
                   child: CircleAvatar(
                     radius: 30.0,

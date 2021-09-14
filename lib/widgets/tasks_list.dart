@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task.dart';
+import 'package:todo_list/services/notification_service.dart';
 import 'package:todo_list/widgets/task_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/models/task_data.dart';
@@ -16,7 +17,7 @@ class _TasksListState extends State<TasksList> {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(seconds: 2), (Timer t) => deletePastTask());
+    timer = Timer.periodic(Duration(seconds: 60), (Timer t) => deletePastTask());
     super.initState();
   }
 
@@ -57,6 +58,13 @@ class _TasksListState extends State<TasksList> {
       print(DateTime.parse(taskList[i].dateTime));
       if (DateTime.parse(taskList[i].dateTime).isBefore(DateTime.now())) {
         Provider.of<TaskData>(context).deleteTask(taskList[i]);
+      }
+      if (DateTime.parse(taskList[i].dateTime)
+          .isBefore(DateTime.now().add(Duration(minutes: 5)))) {
+        NotificationService.showNotification(
+          title: taskList[i].name,
+          body: taskList[i].dateTime,
+        );
       }
     }
   }
