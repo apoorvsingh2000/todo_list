@@ -20,6 +20,7 @@ class TaskData extends ChangeNotifier {
   void addTask(String newTaskTitle, String newDateTime) {
     final task = Task(name: newTaskTitle, dateTime: newDateTime);
     _tasks.add(task);
+    _tasks.sort((a, b) => a.dateTime.compareTo(b.dateTime));
     notifyListeners();
   }
 
@@ -31,16 +32,5 @@ class TaskData extends ChangeNotifier {
   void deleteTask(Task task) {
     _tasks.remove(task);
     notifyListeners();
-  }
-
-  void getUpdatedList() {
-    for (int i = 0; i < _tasks.length; i++) {
-      if ((_tasks[i].dateTime as DateTime).isBefore(DateTime.now())) {
-        _tasks.removeAt(i);
-        print(true);
-      }
-    }
-    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-    _tasks.sort((a, b) => a.dateTime.compareTo(b.dateTime));
   }
 }

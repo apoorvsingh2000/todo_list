@@ -9,72 +9,77 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTaskTitle;
 
-    return Container(
-      color: Color(0xff757575),
-      child: Container(
-        padding: EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(top: 40.0),
+        color: Color(0xff757575),
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            // borderRadius: BorderRadius.only(
+            //   topLeft: Radius.circular(20.0),
+            //   topRight: Radius.circular(20.0),
+            // ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              'Add Task',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.lightBlueAccent,
-              ),
-            ),
-            Column(
-              children: [
-                DateTimePicker(
-                  type: DateTimePickerType.dateTimeSeparate,
-                  dateMask: 'd MMM, yyyy',
-                  initialValue: DateTime.now().toString(),
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime(2100),
-                  icon: Icon(Icons.event),
-                  dateLabelText: 'Date',
-                  timeLabelText: "Hour",
-                  onChanged: (val) async {
-                    final prefs = await SharedPreferences.getInstance();
-                    prefs.setString('dt', val);
-                    print(val);
-                  },
-                ),
-                TextField(
-                  autofocus: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (newText) {
-                    newTaskTitle = newText;
-                  },
-                ),
-              ],
-            ),
-            FlatButton(
-              child: Text(
-                'Add',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text(
+                'Add Task',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  fontSize: 30.0,
+                  color: Colors.lightBlueAccent,
                 ),
               ),
-              color: Colors.lightBlueAccent,
-              onPressed: () async {
-                final prefs = await SharedPreferences.getInstance();
-                final newTaskDt = prefs.getString('dt');
-                print('wwwwwwwwwwwwwwwwwwwwwwwwwwww $newTaskDt');
-                Provider.of<TaskData>(context).addTask(newTaskTitle, newTaskDt);
-                Provider.of<TaskData>(context).getUpdatedList();
-                Navigator.pop(context);
-              },
-            ),
-          ],
+              Column(
+                children: [
+                  DateTimePicker(
+                    type: DateTimePickerType.dateTimeSeparate,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Hour",
+                    onChanged: (val) async {
+                      final prefs = await SharedPreferences.getInstance();
+                      prefs.setString('dt', val);
+                      print(val);
+                    },
+                  ),
+                  TextField(
+                    autofocus: true,
+                    textAlign: TextAlign.center,
+                    onChanged: (newText) {
+                      newTaskTitle = newText;
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              FlatButton(
+                child: Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                color: Colors.lightBlueAccent,
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  final newTaskDt = prefs.getString('dt');
+                  print('wwwwwwwwwwwwwwwwwwwwwwwwwwww $newTaskDt');
+                  Provider.of<TaskData>(context).addTask(newTaskTitle, newTaskDt);
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
